@@ -8,7 +8,7 @@ $(function () {
       url: '/search',
       method: 'POST',
       contentType: 'application/json',
-      data: JSON.stringify({ food: searchQuery.val() }),
+      data: JSON.stringify({ restaurantQuery: searchQuery.val() }),
       success: function(response) {
         $( ".hero-browser-inner" ).empty().append( JSON.stringify(response) );
         searchQuery.val('');
