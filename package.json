@@ -4,11 +4,15 @@
   "description": "Find the healthiest menu items at your favorite restaurant",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "Matthew Volk",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "engines": {
+    "node": "8.11.3",
+    "npm": "6.3.0"
   }
 }
