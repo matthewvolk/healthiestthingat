@@ -5,11 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "start:dev": "nodemon server.js"
+    "start:dev": "nodemon server.js",
+    "build:css": "sass public/scss/style.scss public/css/style.css",
+    "build:js": "minify public/js/src/main.js --out-file public/js/main.min.js --mangle.keepClassName"
   },
   "author": "Matthew Volk",
   "license": "ISC",
   "dependencies": {
+    "babel-minify": "^0.5.0",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",

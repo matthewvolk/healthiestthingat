@@ -1,5 +1,25 @@
-<h1>What's the Healthiest Thing At...</h1>
-<form action="/api/healthylist" method="POST">
-  <input style="width:250px;" type="search" name="search" placeholder="Where are you eating?">
-  <input type="submit" value="Submit">
-</form>
+<% include ./partials/header.ejs %>
+
+<main>
+  <section class="hero text-center">
+      <div class="container-sm">
+          <div class="hero-inner">
+              <h1 class="hero-title h2-mobile mt-0 is-revealing">Find the healthiest food at your favorite restaurant</h1>
+              <div class="hero-form newsletter-form field field-grouped is-revealing">
+                  <div class="control control-expanded">
+                      <input class="input" type="email" name="email" placeholder="Where are you eating?">
+                  </div>
+                  <div class="control">
+                      <a class="button button-primary button-block button-shadow" href="#">Submit</a>
+                  </div>
+              </div>
+              <div class="hero-browser">
+                  <div class="hero-browser-inner is-revealing">
+                      <img src="/images/hero.jpg" />
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+<% include ./partials/footer.ejs %>
