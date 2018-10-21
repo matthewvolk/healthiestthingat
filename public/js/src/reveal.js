@@ -17,7 +17,7 @@
       interval: 150
     })
 
-    sr.reveal('.bubble-3, .bubble-4, .hero-browser-inner, .bubble-1, .bubble-2', {
+    sr.reveal('.hero-browser-inner', {
       duration: 1000,
       scale: 0.95,
       easing: 'cubic-bezier(0.5, -0.01, 0, 1.005)',

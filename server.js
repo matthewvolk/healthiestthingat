@@ -5,6 +5,18 @@ const favicon = require('serve-favicon')
 
 const app = express();
 
+// Test Data
+const food = [
+  {
+    name: 'Burger',
+    calories: '510'
+  },
+  {
+    name: 'Salad',
+    calories: '210'
+  }
+]
+
 app.use(morgan('dev'));
 
 app.set('view engine', 'ejs');
@@ -16,7 +28,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.get('/', (req, res) => res.render('index'));
 
 app.post('/search', (req, res) => {
-  res.json({ search: 'success' });
+  res.json({ food: food });
 });
 
 const PORT = process.env.PORT || 5000;
