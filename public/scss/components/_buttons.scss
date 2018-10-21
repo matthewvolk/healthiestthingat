@@ -90,3 +90,10 @@
 .button-block {
     display: flex;
 }
+
+@media (max-width: 640px) {
+    .button-block {
+        display: inline-block;
+        width: 100%;
+    }
+}
