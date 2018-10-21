@@ -10,7 +10,7 @@ $(function () {
       contentType: 'application/json',
       data: JSON.stringify({ restaurantQuery: searchQuery.val() }),
       success: function(response) {
-        $( ".hero-browser-inner" ).empty().append( JSON.stringify(response) );
+        $( ".hero-browser-inner" ).empty().append( JSON.stringify(response).replace(/\"/g, "") );
         searchQuery.val('');
       }
     })
