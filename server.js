@@ -21,7 +21,7 @@ app.get('/', (req, res) => res.render('index'));
 app.post('/search', (req, res) => {
   var restaurantQuery = req.body.restaurantQuery;
 
-  res.json(`We're still building our database, but stay tuned for nutritional data on ${restaurantQuery}!`);
+  res.json(`Nutritional data on ${restaurantQuery} is coming soon!`);
 });
 
 const PORT = process.env.PORT || 5000;
