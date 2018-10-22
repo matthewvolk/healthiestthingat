@@ -25,4 +25,11 @@ app.post('/search', (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`HTA listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`app listening on port ${PORT}`));
+
+/**
+ * TODO: 
+ * 
+ * 1. Database Connection
+ * 2. Render actual HTML with JQuery instead of JSON.Stringify()
+ */
