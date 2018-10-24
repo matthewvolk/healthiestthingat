@@ -9,18 +9,11 @@
     /* global ScrollReveal */
     const sr = window.sr = ScrollReveal()
 
-    sr.reveal('.hero-title, .hero-paragraph, .newsletter-header, .newsletter-form', {
+    sr.reveal('.hero-title, .hero-paragraph, .newsletter-header, .newsletter-form, .hero-browser-inner', {
       duration: 1000,
       distance: '40px',
       easing: 'cubic-bezier(0.5, -0.01, 0, 1.005)',
       origin: 'bottom',
-      interval: 150
-    })
-
-    sr.reveal('.hero-browser-inner', {
-      duration: 1000,
-      scale: 0.95,
-      easing: 'cubic-bezier(0.5, -0.01, 0, 1.005)',
       interval: 150
     })
 
