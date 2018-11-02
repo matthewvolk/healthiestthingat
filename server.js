@@ -6,15 +6,13 @@ const express = require('express');
 const morgan = require('morgan');
 const favicon = require('serve-favicon')
 const bodyParser = require('body-parser');
-const keys = require('./config/keys');
+
+require('dotenv').config();
 
 /* ----------------- *\
     Setup & Config
 \* ----------------- */
 const app = express();
-
-// Interesting note: module.exports = require(''); logs an empty object:
-console.log('THE KEY IS', keys);
 
 app.use(morgan('dev'));
 
@@ -39,8 +37,9 @@ app.post('/search', (req, res) => {
 /* ----------------- *\
     Server
 \* ----------------- */
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`app listening on port ${PORT}`));
+app.listen(process.env.PORT, () => 
+  console.log(`\nApplication listening on http://localhost:${process.env.PORT}/\n`)
+);
 
 /**
  * TODO: 
