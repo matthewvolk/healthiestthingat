@@ -6,11 +6,15 @@ const express = require('express');
 const morgan = require('morgan');
 const favicon = require('serve-favicon')
 const bodyParser = require('body-parser');
+const keys = require('./config/keys');
 
 /* ----------------- *\
     Setup & Config
 \* ----------------- */
 const app = express();
+
+// Interesting note: module.exports = require(''); logs an empty object:
+console.log('THE KEY IS', keys);
 
 app.use(morgan('dev'));
 
