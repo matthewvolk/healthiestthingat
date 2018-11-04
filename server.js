@@ -31,6 +31,8 @@ app.get('/', (req, res) => res.render('index'));
 
 app.post('/search', (req, res) => {
   var restaurantQuery = req.body.restaurantQuery;
+  // Query database, return all row where restaurant_name == restaurantQuery
+  // Create an array of objects where each restaurant menu item is an object in the array
   res.send(`Nutritional data on ${restaurantQuery} is coming soon!`);
 });
 
