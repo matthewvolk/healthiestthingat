@@ -60,4 +60,5 @@ app.listen(process.env.PORT, () =>
  *     - A button: "Click here to vote for us to add %query"
  *     I need to look out for and parse mumbo jumbo like "test" queries
  * [] Format returned data
+ * 
  */
