@@ -6,12 +6,13 @@ const express = require('express');
 const morgan = require('morgan');
 const favicon = require('serve-favicon')
 const bodyParser = require('body-parser');
-
-require('dotenv').config();
+const { Client } = require('pg');
 
 /* ----------------- *\
     Setup & Config
 \* ----------------- */
+require('dotenv').config();
+
 const app = express();
 
 app.use(morgan('dev'));
@@ -34,6 +35,8 @@ app.post('/search', (req, res) => {
   var restaurantQuery = req.body.restaurantQuery;
   // Query database, return all row where restaurant_name == restaurantQuery
   // Create an array of objects where each restaurant menu item is an object in the array
+
+  // SELECT * FROM master_restaurant_menu_items WHERE restaurant_name='$1' AND calories_kcal!='0' AND menu_item_category='Entrée' ORDER BY calories_kcal ASC;
   res.send(`Nutritional data on ${restaurantQuery} is coming soon!`);
 });
 
