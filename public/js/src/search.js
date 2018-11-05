@@ -48,7 +48,7 @@ $(function () {
                 <br>
                 <strong>Cholesterol:</strong> ${response[i].cholesterol_miligrams}mg
                 <br />
-                <span style="color:#1eae8f;"><strong>Sodium:</strong> ${response[i].sodium_miligrams}mg (${((response[i].sodium_miligrams) / 2300).toFixed(2) * 100 }% DV)</span> 
+                <span style="color:#1eae8f;"><strong>Sodium:</strong> ${response[i].sodium_miligrams}mg (${((response[i].sodium_miligrams) / 2300).toFixed(2) * 100.00 }% DV)</span> 
                 <br />
                 <strong>Dietary Fiber:</strong> ${response[i].dietary_fiber_grams}g
                 <br />
