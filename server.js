@@ -33,11 +33,39 @@ app.get('/', (req, res) => res.render('index'));
 
 app.post('/search', (req, res) => {
   var restaurantQuery = req.body.restaurantQuery;
-  // Query database, return all row where restaurant_name == restaurantQuery
-  // Create an array of objects where each restaurant menu item is an object in the array
 
-  // SELECT * FROM master_restaurant_menu_items WHERE restaurant_name='$1' AND calories_kcal!='0' AND menu_item_category='Entrée' ORDER BY calories_kcal ASC;
-  res.send(`Nutritional data on ${restaurantQuery} is coming soon!`);
+  // Open connection to database
+  const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+  })
+  client.connect()
+   .then(() => {
+       console.log('Connected to PostgreSQL Database: healthiestthingat');
+
+       // Create and Sanitize SQL Query
+       const searchQuery = "SELECT * FROM restaurant_menu_items WHERE restaurant_name=$1 AND calories_kcal!='0' AND menu_item_category='Entrée' ORDER BY calories_kcal ASC;"
+       const searchQueryParams = [restaurantQuery];
+
+       // Execute SQL Query
+       return client.query(searchQuery, searchQueryParams);
+   })
+   .then((results) => {
+       // Log Promise
+       console.log(results.rows);
+
+       // If Promise contains rows that have data, send those to the front end
+       if (results.rows.length > 0) {
+           res.send(results.rows);
+       } else {
+           res.send(`Nutritional data on ${restaurantQuery} is coming soon!`);
+       }
+   })
+   .catch((err) => {
+       console.log('ERR:', err);
+   });
+
+  // SELECT * FROM restaurant_menus WHERE restaurant_name='$1' AND calories_kcal!='0' AND menu_item_category='Entrée' ORDER BY calories_kcal ASC;
+  
 });
 
 /* ----------------- *\
@@ -50,17 +78,10 @@ app.listen(process.env.PORT, () =>
 /**
  * TODO: 
  * 
- * [X] Turn Google Sheets -> CSV
- * [X] Import CSV into local PostgreSQL as a table
- * [] Connect local PostgreSQL to Node/Express
  * [] Provision Heroku PostgreSQL
  * [] Import CSV into Heroku PostgreSQL as a table
- * [] Read about database migrations between Heroku and Local PostgreSQL (https://devcenter.heroku.com/articles/heroku-postgres-import-export)
- * [] Configure .env files to connect to databases based on process.env.NODE_ENV for dev and prod
- * [] Use body-parser to parse incoming client post requests to /search for search query to send to database
- * [] Query database RESTAURANT NAME column for parsed incoming body request
- * [] Display loader icon while database is queried
- * [] Get results from database query to render actual HTML with JQuery instead of JSON.Stringify() in js/src/search.js
+ *     - Read about database migrations between Heroku and Local PostgreSQL (https://devcenter.heroku.com/articles/heroku-postgres-import-export)
+ * [] Search suggestions so that you can enter part of a restaurant name and see the rest of the name populate
  * [] If no restaurant name is found, display either:
  *     - A message: "No data on %query yet, but your search request just sent us a message that you would like us to add %query"
  *     - A button: "Click here to vote for us to add %query"
