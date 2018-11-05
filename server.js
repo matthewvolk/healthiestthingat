@@ -39,7 +39,8 @@ app.post('/search', (req, res) => {
     .split(' ')
     .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
     .map((s) => s.replace(/\W/g, ''))
-    .join(' ');
+    .join(' ')
+    .trim();
 
   console.log(restaurantQuery);
 
