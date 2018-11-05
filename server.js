@@ -1,6 +1,6 @@
-/* ----------------- *\
+/* ----------------------- *\
     Imports
-\* ----------------- */
+\* ----------------------- */
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
@@ -8,9 +8,9 @@ const favicon = require('serve-favicon')
 const bodyParser = require('body-parser');
 const { Client } = require('pg');
 
-/* ----------------- *\
+/* ----------------------- *\
     Setup & Config
-\* ----------------- */
+\* ----------------------- */
 require('dotenv').config();
 
 const app = express();
@@ -26,13 +26,22 @@ app.set('views', './views');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-/* ----------------- *\
+/* ----------------------- *\
     Routes
-\* ----------------- */
+    TODO: express.Router
+\* ----------------------- */
 app.get('/', (req, res) => res.render('index'));
 
 app.post('/search', (req, res) => {
-  var restaurantQuery = req.body.restaurantQuery;
+
+  var restaurantQuery = req.body.restaurantQuery
+    .toLowerCase()
+    .split(' ')
+    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+    .map((s) => s.replace(/\W/g, ''))
+    .join(' ');
+
+  console.log(restaurantQuery);
 
   // Open connection to database
   const client = new Client({
@@ -40,10 +49,9 @@ app.post('/search', (req, res) => {
   })
   client.connect()
    .then(() => {
-       console.log('Connected to PostgreSQL Database: healthiestthingat');
 
        // Create and Sanitize SQL Query
-       const searchQuery = "SELECT * FROM restaurant_menu_items WHERE restaurant_name=$1 AND calories_kcal!='0' AND menu_item_category='Entrée' ORDER BY calories_kcal ASC;"
+       const searchQuery = "SELECT * FROM restaurant_menu_items WHERE restaurant_name=$1 AND calories_kcal!='0' AND menu_item_category='Entrée' ORDER BY calories_kcal ASC, protein_grams DESC;"
        const searchQueryParams = [restaurantQuery];
 
        // Execute SQL Query
@@ -64,13 +72,11 @@ app.post('/search', (req, res) => {
        console.log('ERR:', err);
    });
 
-  // SELECT * FROM restaurant_menus WHERE restaurant_name='$1' AND calories_kcal!='0' AND menu_item_category='Entrée' ORDER BY calories_kcal ASC;
-  
 });
 
-/* ----------------- *\
+/* ----------------------- *\
     Server
-\* ----------------- */
+\* ----------------------- */
 app.listen(process.env.PORT, () => 
   console.log(`\nApplication listening on http://localhost:${process.env.PORT}/\n`)
 );
