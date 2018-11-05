@@ -38,7 +38,7 @@ $(function () {
                 <br />
                 <strong>Total Fat:</strong> ${response[i].total_fat_grams}g
                 <br />
-                <strong>Total Carbs:</strong> ${response[i].carbohydrates_grams}g
+                <span style="color:#1eae8f;"><strong>Total Carbs:</strong> ${response[i].carbohydrates_grams}g</span>
                 <br />
                 <span style="color:#1eae8f;"><strong>Protein:</strong> ${response[i].protein_grams}g</span>
                 <br />
