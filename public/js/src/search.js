@@ -46,9 +46,9 @@ $(function () {
                 <br />
                 <strong>Trans Fat:</strong> ${response[i].trans_fat_grams}g
                 <br>
-                <strong>Cholesterol:</strong> ${response[i].cholesterol_miligrams}mg
+                <strong>Cholesterol:</strong> ${response[i].cholesterol_miligrams}mg (${(((response[i].cholesterol_miligrams) / 300).toFixed(4) * 100).toFixed(2)}% DV<sup>*</sup>)
                 <br />
-                <span style="color:#1eae8f;"><strong>Sodium:</strong> ${response[i].sodium_miligrams}mg (${(((response[i].sodium_miligrams) / 2300).toFixed(4) * 100).toFixed(2)}% DV)</span> 
+                <span style="color:#1eae8f;"><strong>Sodium:</strong> ${response[i].sodium_miligrams}mg (${(((response[i].sodium_miligrams) / 2300).toFixed(4) * 100).toFixed(2)}% DV<sup>*</sup>)</span> 
                 <br />
                 <strong>Dietary Fiber:</strong> ${response[i].dietary_fiber_grams}g
                 <br />
@@ -56,6 +56,8 @@ $(function () {
               </p>
               <hr />`);
           }
+          $( ".hero-browser-inner" ).append(`<p><sup>*</sup>Daily Values based on a 2,000 calorie diet.</p>`);
+
         } else {
           $( ".hero-browser-inner" ).append(`<p>We're still building our database, and don't have that restaurant yet. To request that we add it, send an email to Matt at <a href="mailto:volkmattj@gmail.com"><span style="unicode-bidi: bidi-override; direction: rtl;">moc.liamg@jttamklov</span></a></p>`);
         }
