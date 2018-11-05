@@ -85,14 +85,10 @@ app.listen(process.env.PORT, () =>
 /**
  * TODO: 
  * 
- * [] Provision Heroku PostgreSQL
- * [] Import CSV into Heroku PostgreSQL as a table
- *     - Read about database migrations between Heroku and Local PostgreSQL (https://devcenter.heroku.com/articles/heroku-postgres-import-export)
+ * [] Read about database migrations between Heroku and Local PostgreSQL (https://devcenter.heroku.com/articles/heroku-postgres-import-export)
  * [] Search suggestions so that you can enter part of a restaurant name and see the rest of the name populate
  * [] If no restaurant name is found, display either:
- *     - A message: "No data on %query yet, but your search request just sent us a message that you would like us to add %query"
- *     - A button: "Click here to vote for us to add %query"
- *     I need to look out for and parse mumbo jumbo like "test" queries
- * [] Format returned data
+ *     - A button: "Click here to vote for us to add %query" (I would need to look out for (parse) mumbo jumbo responses like "test")
+ * [] Format returned data (CSS, JS animations, etc.)
  * 
  */
