@@ -26,7 +26,13 @@ $(function () {
         $( ".hero-browser-inner" ).empty();
 
         if (response[0].menu_item_name) {
-          // Loop through the array of objects
+          /**
+           * Loop through the array of objects
+           * 
+           * TODO:
+           * Rewrite this to use map, and also contain it in another
+           * separate function
+           */
           for (let i = 0; i < 10; i++) {
             // Begin rendering data returned from server after form is submitted
             $( ".hero-browser-inner" ).append(`

@@ -85,6 +85,8 @@ app.listen(process.env.PORT, () =>
 /**
  * TODO: 
  * 
+ * [] Add flexbox grid to front page and display currently available restaurants
+ * [] Add "Near You" functionality
  * [] Read about database migrations between Heroku and Local PostgreSQL (https://devcenter.heroku.com/articles/heroku-postgres-import-export)
  * [] Search suggestions so that you can enter part of a restaurant name and see the rest of the name populate
  * [] If no restaurant name is found, display either:
