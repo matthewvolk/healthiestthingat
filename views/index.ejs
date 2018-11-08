@@ -5,6 +5,7 @@
       <div class="container-sm">
           <div class="hero-inner">
               <h1 class="hero-title h2-mobile mt-0 is-revealing">Find the healthiest food at your favorite restaurant</h1>
+              <p class="hero-title h2-mobile mt-0 is-revealing">Type in the name of a restaurant to get a list of their menu items, ranked by healthiest to least healthiest</p>
               <form id="searchForm" class="hero-form newsletter-form field field-grouped is-revealing" method="POST" action="/search">
                   <div class="control control-expanded">
                       <input id="mainSearchInputField" class="input" type="search" name="search" placeholder="Try searching 'Burger King' or 'McDonald's'">
@@ -17,14 +18,16 @@
                   <div class="hero-browser-inner is-revealing">
 
                       <!-- TODO:
-                      
-                      1. Un-hard-code styles
-                      2. Understand div structure/hierarchy/CSS
-                      
+
+                      1. Separate inline styles into CSS folder
+                      2. Click a card to send data to server
+
+                      <img src="/images/compressed-hero.png" />
+
                       -->
 
                       <div class="hero-image-container">
-                        <h2>Featuring...</h2>
+                        <h3>or, click a restaurant below:</h3>
                         <br>
                         <div class="restaurant" style="margin-bottom: 3rem;">
                             <img style="margin: 0 auto;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/2000px-Burger_King_Logo.svg.png" width="175" height="175" alt="">

@@ -37,7 +37,7 @@ $(function () {
             // Begin rendering data returned from server after form is submitted
             $( ".hero-browser-inner" ).append(`
               <p>
-                <span style="font-size:1.25rem; margin-bottom:10px;"><strong>${response[i].menu_item_name}</strong></span>
+                <span style="font-size:1.25rem; margin-bottom:10px;"><strong>${i + 1}. ${response[i].menu_item_name}</strong></span>
                 <br /> 
                 <br />
                 <span style="color:#1eae8f;"><strong>Calories:</strong> ${response[i].calories_kcal}</span>
