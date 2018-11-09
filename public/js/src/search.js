@@ -3,14 +3,14 @@
  * $(document).ready(function() { ... });  
 */
 $(function () {
+  // Grab input field HTML element with id="#searchQuery"
+  var mainSearchInputField = $('#mainSearchInputField');
 
+  // Focus on input onload
   mainSearchInputField.focus();
 
   $('#searchForm').on('submit', function(event) {
     event.preventDefault();
-
-    // Grab input field HTML element with id="#searchQuery"
-    var mainSearchInputField = $('#mainSearchInputField');
 
     $.ajax({
       url: '/search',
@@ -26,18 +26,11 @@ $(function () {
         $( ".hero-browser-inner" ).empty();
 
         if (response[0].menu_item_name) {
-          /**
-           * Loop through the array of objects
-           * 
-           * TODO:
-           * Rewrite this to use map, and also contain it in another
-           * separate function
-           */
           for (let i = 0; i < 10; i++) {
             // Begin rendering data returned from server after form is submitted
             $( ".hero-browser-inner" ).append(`
               <p>
-                <span style="font-size:1.25rem; margin-bottom:10px;"><strong>${i + 1}. ${response[i].menu_item_name}</strong></span>
+                <span style="font-size:1.25rem; margin-bottom:10px;"><strong>${'#' + (i + 1)}. ${i == 0 ? '(Lowest Calories)' : ''} ${response[i].menu_item_name}</strong></span>
                 <br /> 
                 <br />
                 <span style="color:#1eae8f;"><strong>Calories:</strong> ${response[i].calories_kcal}</span>
@@ -65,7 +58,7 @@ $(function () {
           $( ".hero-browser-inner" ).append(`<small>*Daily Values based on a 2,000 calorie diet.</small>`);
 
         } else {
-          $( ".hero-browser-inner" ).append(`<p>We're still building our database, and don't have that restaurant yet. To request that we add it, send an email to Matt at <a href="mailto:volkmattj@gmail.com"><span style="unicode-bidi: bidi-override; direction: rtl;">moc.liamg@jttamklov</span></a></p>`);
+          $( ".hero-browser-inner" ).append(`<p>Oops! We're still building our database, and don't have that restaurant yet. To request that we add it, send an email to Matt at <a href="mailto:volkmattj@gmail.com"><span style="unicode-bidi: bidi-override; direction: rtl;">moc.liamg@jttamklov</span></a></p><img src='https://media0.giphy.com/media/CDpAmfo9dbOyA/giphy.gif?cid=3640f6095be4f32d737452426baf3e84' />`);
         }
         
         // Clear search input field

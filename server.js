@@ -42,8 +42,6 @@ app.post('/search', (req, res) => {
     .join(' ')
     .trim();
 
-  console.log(restaurantQuery);
-
   // Open connection to database
   const client = new Client({
     connectionString: process.env.DATABASE_URL,
@@ -60,7 +58,7 @@ app.post('/search', (req, res) => {
    })
    .then((results) => {
        // Log Promise
-       console.log(results.rows);
+       // console.log(results.rows);
 
        // If Promise contains rows that have data, send those to the front end
        if (results.rows.length > 0) {
