@@ -40,16 +40,20 @@ app.listen(process.env.PORT, () =>
 /**
  * TODO: 
  * 
- * [] Search results should return all rows associated with the Restaurant Name entered by user and:
- *    - Should be able to add filters so that users can choose to rank by other nutrition factor
- *    - Should be able to add filters so that users can add breakfast, beverage, etc. 
- * [] Add "Near You" functionality
- * [] understand how to break javascript out into separate, class based functions. Create a class to handle AJAX POST
- *    requests via clicking on a link. 
- * [] Read about database migrations between Heroku and Local PostgreSQL (https://devcenter.heroku.com/articles/heroku-postgres-import-export)
- * [] Search suggestions so that you can enter part of a restaurant name and see the rest of the name populate
+ * [] Handle AJAX POST requests via clicking on a featured restaurant. 
+ * [] Write smarter SQL queries
+ *    - Should return all data associated with the restaurant the user enters
+ *    - Should be sortable via user filtering (Rank by Protein, Include Breakfast, etc.)
+ * [] Make it pretty - format returned data (CSS, JS animations, etc.)
+ * [] Search suggestions so that you can enter part of a restaurant name and see the rest of the name populate in dropdown
  * [] If no restaurant name is found, display either:
- *     - A button: "Click here to vote for us to add %query" (I would need to look out for (parse) mumbo jumbo responses like "test")
- * [] Format returned data (CSS, JS animations, etc.)
+ *    - A button: "Click here to vote for us to add %query" (I would need to look out for (parse) mumbo jumbo responses like "test")
+ * 
+ * 
+ * LONG TERM: 
+ * 
+ * [] Add "Near You" functionality
+ * [] Break javascript out into separate, class based functions. 
+ * [] Read about database migrations between Heroku and Local PostgreSQL (https://devcenter.heroku.com/articles/heroku-postgres-import-export)
  * 
  */

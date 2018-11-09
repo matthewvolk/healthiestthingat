@@ -5,11 +5,11 @@
       <div class="container-sm">
           <div class="hero-inner">
 
-              <!-- Hero Header -->
+              <!-- Hero Main Text -->
               <h1 class="hero-title h2-mobile mt-0 is-revealing">Find the healthiest food at your favorite restaurant</h1>
               <p class="hero-paragraph mt-0 is-revealing">Type in the name of a restaurant to get started:</p>
 
-              <!-- Hero Form -->
+              <!-- Hero Main Form -->
               <form id="searchForm" class="hero-form newsletter-form field field-grouped is-revealing" method="POST" action="/search">
                   <div class="control control-expanded">
                       <input id="mainSearchInputField" class="input" type="search" name="search" placeholder="Try searching 'Burger King' or 'McDonald's'">
@@ -19,7 +19,7 @@
                   </div>
               </form>
 
-              <!-- Featured Restaurants -->
+              <!-- Featured Restaurants List -->
               <div class="hero-browser">
                   <div class="hero-browser-inner is-revealing">
                       <!-- TODO:
@@ -29,21 +29,21 @@
                       <h3>Near You:</h3>
                       <br>
                       <div class="restaurant" style="margin-bottom: 3rem;">
-                          <img style="margin: 0 auto;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/2000px-Burger_King_Logo.svg.png" width="175" height="175" alt="">
+                          <img style="margin: 0 auto;" data-restaurant-image="Burger King" width="150" height="150" alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Burger_King_Logo.svg/2000px-Burger_King_Logo.svg.png">
                           <h5>Burger King</h5>
                       </div>
                   </div>
 
                   <div class="hero-browser-inner is-revealing">
                       <div class="restaurant" style="margin-bottom: 3rem;">
-                          <img style="margin: 0 auto;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/2000px-McDonald%27s_Golden_Arches.svg.png" width="175" height="150" alt="">
+                          <img style="margin: 0 auto;" data-restaurant-image="McDonald's" width="150" height="125" alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/2000px-McDonald%27s_Golden_Arches.svg.png">
                           <h5>McDonald's</h5>
                       </div>
                   </div>
 
                   <div class="hero-browser-inner is-revealing">
                       <div class="restaurant" style="margin-bottom: 3rem;">
-                          <img style="margin: 0 auto;" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Taco_Bell_2016.svg/1200px-Taco_Bell_2016.svg.png" width="125" height="150" alt="">
+                          <img style="margin: 0 auto;" data-restaurant-image="Taco Bell" width="125" height="150" alt="" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Taco_Bell_2016.svg/1200px-Taco_Bell_2016.svg.png">
                           <h5>Taco Bell</h5>
                       </div>
                   </div>
