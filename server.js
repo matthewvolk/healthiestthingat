@@ -6,7 +6,6 @@ const express = require('express');
 const morgan = require('morgan');
 const favicon = require('serve-favicon')
 const bodyParser = require('body-parser');
-// const { Client } = require('pg');
 
 /* ----------------------- *\
     Setup & Config
