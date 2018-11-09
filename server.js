@@ -30,7 +30,6 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 \* ----------------------- */
 app.use('/', require('./routes'));
 
-
 /* ----------------------- *\
     Server
 \* ----------------------- */
@@ -41,7 +40,9 @@ app.listen(process.env.PORT, () =>
 /**
  * TODO: 
  * 
- * [] Add flexbox grid to front page and display currently available restaurants
+ * [] Search results should return all rows associated with the Restaurant Name entered by user and:
+ *    - Should be able to add filters so that users can choose to rank by other nutrition factor
+ *    - Should be able to add filters so that users can add breakfast, beverage, etc. 
  * [] Add "Near You" functionality
  * [] understand how to break javascript out into separate, class based functions. Create a class to handle AJAX POST
  *    requests via clicking on a link. 

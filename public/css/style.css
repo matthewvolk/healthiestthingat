@@ -1290,16 +1290,6 @@ label {
 main {
   flex: 1 0 auto; }
 
-.section-inner {
-  position: relative;
-  /* To always display inner elements above pseudo decorative stuff */
-  padding-top: 48px;
-  padding-bottom: 48px; }
-
-@media (min-width: 641px) {
-  .section-inner {
-    padding-top: 80px;
-    padding-bottom: 80px; } }
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
