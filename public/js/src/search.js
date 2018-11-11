@@ -27,7 +27,7 @@ $(function () {
         mainSearchInputField.val('');
         mainSearchInputField.blur();
 
-        window.scrollTo(0, 100);
+        window.scrollTo(0, 200);
       }
     })
   })
@@ -48,7 +48,7 @@ $(function () {
         // console.log(response);
         renderResults(response);
 
-        window.scrollTo(0, 100);
+        window.scrollTo(0, 200);
       }
     })
   })
