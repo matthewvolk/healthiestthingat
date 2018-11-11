@@ -1092,7 +1092,7 @@ label {
 --------------------------------------------------------------*/
 .hero {
   position: relative;
-  padding-top: 30px;
+  padding-top: 20px;
   padding-bottom: 10px; }
 
 .hero-paragraph {
@@ -1147,8 +1147,8 @@ label {
 
 @media (min-width: 641px) {
   .hero {
-    padding-top: 80px;
-    padding-bottom: 120px; }
+    padding-top: 40px;
+    padding-bottom: 60px; }
 
   .hero-paragraph {
     margin-bottom: 40px;
