@@ -28,7 +28,7 @@ $(function () {
         if (response[0].menu_item_name) {
           for (let i = 0; i < 10; i++) {
             // Begin rendering data returned from server after form is submitted
-            $( ".hero-browser-inner" ).append(`
+            $( ".first" ).append(`
               <p>
                 <span style="font-size:1.25rem; margin-bottom:10px;"><strong>${'#' + (i + 1)}. ${i == 0 ? '(Lowest Calories)' : ''} ${response[i].menu_item_name}</strong></span>
                 <br /> 
@@ -55,10 +55,10 @@ $(function () {
               </p>
               <hr />`);
           }
-          $( ".hero-browser-inner" ).append(`<small>*Daily Values based on a 2,000 calorie diet.</small>`);
+          $( ".first" ).append(`<small>*Daily Values based on a 2,000 calorie diet.</small>`);
 
         } else {
-          $( ".hero-browser-inner" ).append(`<p>Oops! We're still building our database, and don't have that restaurant yet. To request that we add it, send an email to Matt at <a href="mailto:volkmattj@gmail.com"><span style="unicode-bidi: bidi-override; direction: rtl;">moc.liamg@jttamklov</span></a></p><img src='https://media0.giphy.com/media/CDpAmfo9dbOyA/giphy.gif?cid=3640f6095be4f32d737452426baf3e84' />`);
+          $( ".first" ).append(`<p>Oops! We're still building our database, and don't have that restaurant yet. To request that we add it, send an email to Matt at <a href="mailto:volkmattj@gmail.com"><span style="unicode-bidi: bidi-override; direction: rtl;">moc.liamg@jttamklov</span></a></p><img style="margin: 0 auto;" src='https://media0.giphy.com/media/CDpAmfo9dbOyA/giphy.gif?cid=3640f6095be4f32d737452426baf3e84' />`);
         }
         
         // Clear search input field
