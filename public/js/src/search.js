@@ -26,6 +26,8 @@ $(function () {
         // Clear search input field
         mainSearchInputField.val('');
         mainSearchInputField.blur();
+
+        window.scrollTo(0, 100);
       }
     })
   })
@@ -45,6 +47,8 @@ $(function () {
         // Response from the backend is an array of objects
         // console.log(response);
         renderResults(response);
+
+        window.scrollTo(0, 100);
       }
     })
   })
