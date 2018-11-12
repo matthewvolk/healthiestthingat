@@ -63,28 +63,27 @@ const renderResults = (response) => {
       $( ".first" ).append(`
         <p>
           ${renderImage(response, i)}
-          <span style="font-size:1.25rem; margin-bottom:10px;"><strong>${'#' + (i + 1)}. ${i == 0 ? '(Lowest Calories)' : ''} ${response[i].menu_item_name}</strong></span>
+          <span style="margin-bottom:5px;font-size:1.15rem;"><strong>${'#' + (i + 1)}. ${i == 0 ? '(Lowest Calories)' : ''} ${response[i].menu_item_name}</strong></span>
           <br /> 
+          <span style="color:#1eae8f;font-size:0.90rem;"><strong>Calories:</strong> ${response[i].calories_kcal}</span>
           <br />
-          <span style="color:#1eae8f;"><strong>Calories:</strong> ${response[i].calories_kcal}</span>
+          <span style="font-size:0.90rem;"><strong>Total Fat:</strong> ${response[i].total_fat_grams}g</span>
           <br />
-          <strong>Total Fat:</strong> ${response[i].total_fat_grams}g
+          <span style="color:#1eae8f;font-size:0.90rem;"><strong>Total Carbs:</strong> ${response[i].carbohydrates_grams}g</span>
           <br />
-          <span style="color:#1eae8f;"><strong>Total Carbs:</strong> ${response[i].carbohydrates_grams}g</span>
+          <span style="color:#1eae8f;font-size:0.90rem;"><strong>Protein:</strong> ${response[i].protein_grams}g</span>
           <br />
-          <span style="color:#1eae8f;"><strong>Protein:</strong> ${response[i].protein_grams}g</span>
+          <span style="font-size:0.90rem;"><strong>Saturated Fat:</strong> ${response[i].saturated_fat_grams}g</span>
           <br />
-          <strong>Saturated Fat:</strong> ${response[i].saturated_fat_grams}g
-          <br />
-          <strong>Trans Fat:</strong> ${response[i].trans_fat_grams}g
+          <span style="font-size:0.90rem;"><strong>Trans Fat:</strong> ${response[i].trans_fat_grams}g</span>
           <br>
-          <strong>Cholesterol:</strong> ${response[i].cholesterol_miligrams}mg (${(((response[i].cholesterol_miligrams) / 300).toFixed(4) * 100).toFixed(2)}% DV*)
+          <span style="font-size:0.90rem;"><strong>Cholesterol:</strong> ${response[i].cholesterol_miligrams}mg (${(((response[i].cholesterol_miligrams) / 300).toFixed(4) * 100).toFixed(2)}% DV*)</span>
           <br />
-          <span style="color:#1eae8f;"><strong>Sodium:</strong> ${response[i].sodium_miligrams}mg (${(((response[i].sodium_miligrams) / 2300).toFixed(4) * 100).toFixed(2)}% DV*)</span> 
+          <span style="color:#1eae8f;font-size:0.90rem;"><strong>Sodium:</strong> ${response[i].sodium_miligrams}mg (${(((response[i].sodium_miligrams) / 2300).toFixed(4) * 100).toFixed(2)}% DV*)</span> 
           <br />
-          <strong>Dietary Fiber:</strong> ${response[i].dietary_fiber_grams}g
+          <span style="font-size:0.90rem;"><strong>Dietary Fiber:</strong> ${response[i].dietary_fiber_grams}g</span>
           <br />
-          <strong>Sugar:</strong> ${response[i].sugar_grams}g
+          <span style="font-size:0.90rem;"><strong>Sugar:</strong> ${response[i].sugar_grams}g</span>
         </p>
         <hr />`);
     }
@@ -98,7 +97,7 @@ const renderResults = (response) => {
 const renderImage = (response, i) => {
 
   if (response[i].image_url) {
-    return `<img src="${response[i].image_url}" width="100" style="margin: 0 auto 15px auto;" />`;
+    return `<img src="${response[i].image_url}" width="115" style="margin: 0 auto 15px auto;" />`;
   } else {
     return ``;
   }
