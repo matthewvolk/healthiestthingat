@@ -310,7 +310,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Lato", sans-serif; }
+  font-family: "Lato", "HelveticaNeue", sans-serif; }
 
 a {
   color: inherit;
