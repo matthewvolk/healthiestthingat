@@ -98,7 +98,7 @@ const renderResults = (response) => {
 const renderImage = (response, i) => {
 
   if (response[i].image_url) {
-    return `<img src="${response[i].image_url}" width="150" style="margin: 0 auto 15px auto;" />`;
+    return `<img src="${response[i].image_url}" width="100" style="margin: 0 auto 15px auto;" />`;
   } else {
     return ``;
   }
