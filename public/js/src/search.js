@@ -20,7 +20,7 @@ $(function () {
 
       success: function(response) {
         // Response from the backend is an array of objects
-        renderResults(response)
+        renderResults(response, mainSearchInputField.val())
 
         // Clear search input field
         mainSearchInputField.val('');
@@ -44,7 +44,7 @@ $(function () {
 
       success: function(response) {
         // Response from the backend is an array of objects
-        renderResults(response);
+        renderResults(response, restaurantName);
 
         window.scrollTo(0, 200);
       }
@@ -53,11 +53,16 @@ $(function () {
 })
 
 
-const renderResults = (response) => {
+const renderResults = (response, query) => {
   // Empty the content under the search bar
   $( ".hero-browser-inner" ).empty();
 
   if (response[0].menu_item_name) {
+
+    if (query) {
+      $('.first').append(`<p style="margin-top:0; margin-bottom:40px;">Results for '${query}'</p>`);
+    }
+
     for (let i = 0; i < 25; i++) {
       // Begin rendering data returned from server after form is submitted
       $( ".first" ).append(`
