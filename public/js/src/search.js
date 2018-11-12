@@ -9,16 +9,6 @@ $(function () {
   // Focus on input onload
   mainSearchInputField.focus();
 
-  /**
-   * TODO:
-   * 
-   * Fix minor issues with client-side XSS.
-   * Postgres takes care of input sanitization on the backend
-   * but there is nothing to prevent it on the front end. 
-   * 
-   * See function 'renderResults' below
-   */
-
   $('#searchForm').on('submit', function(event) {
     event.preventDefault();
 
@@ -105,7 +95,20 @@ const renderResults = (response, query) => {
     $( ".first" ).append(`<small>*Daily Values based on a 2,000 calorie diet.</small>`);
 
   } else {
-    // $( ".first" ).append(`<p>Oops! We're still building our database, and don't have '${query}' yet. To request that we add ${query} to our database, send an email to Matt at <a href="mailto:volkmattj@gmail.com?subject=Please add "${query}" to HealthiestThingAt!&body=That's all :)"><span style="unicode-bidi: bidi-override; direction: rtl;">moc.liamg@jttamklov</span></a></p><img style="margin: 0 auto;" src='https://media0.giphy.com/media/CDpAmfo9dbOyA/giphy.gif?cid=3640f6095be4f32d737452426baf3e84' />`);
+
+    /**
+   * TODO:
+   * 
+   * Fix minor issues with client-side XSS.
+   * Postgres takes care of input sanitization on the backend
+   * but there is nothing to prevent it on the front end. 
+   * 
+   * Ex.
+   * $( ".first" ).append(`<p>Oops! We're still building our database, and don't have '${query}' yet. To request that we add ${query} to our database, send an email to Matt at <a href="mailto:volkmattj@gmail.com?subject=Please add "${query}" to HealthiestThingAt!&body=That's all :)"><span style="unicode-bidi: bidi-override; direction: rtl;">moc.liamg@jttamklov</span></a></p><img style="margin: 0 auto;" src='https://media0.giphy.com/media/CDpAmfo9dbOyA/giphy.gif?cid=3640f6095be4f32d737452426baf3e84' />`);
+   * 
+   * ${query} will run any scripts or html it is passed with
+   */
+
     $( ".first" ).append(`<p>Oops! We're still building our database, and don't have that restaurant yet. To request that we add it to our database, send an email to Matt at <a href="mailto:volkmattj@gmail.com"><span style="unicode-bidi: bidi-override; direction: rtl;">moc.liamg@jttamklov</span></a></p><img style="margin: 0 auto;" src='https://media0.giphy.com/media/CDpAmfo9dbOyA/giphy.gif?cid=3640f6095be4f32d737452426baf3e84' />`);
   }
 }
