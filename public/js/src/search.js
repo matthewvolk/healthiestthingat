@@ -4,7 +4,7 @@
 */
 $(function () {
   // Grab input field HTML element with id="#searchQuery"
-  var mainSearchInputField = $('#mainSearchInputField');
+  const mainSearchInputField = $('#mainSearchInputField');
 
   // Focus on input onload
   mainSearchInputField.focus();
@@ -20,7 +20,6 @@ $(function () {
 
       success: function(response) {
         // Response from the backend is an array of objects
-        // console.log(response);
         renderResults(response)
 
         // Clear search input field
@@ -35,7 +34,7 @@ $(function () {
   $('.restaurant-link').on('click', function(event) {
     event.preventDefault();
 
-    let restaurantName = $(this)[0].childNodes[1].dataset.restaurantImage;
+    const restaurantName = $(this)[0].childNodes[1].dataset.restaurantImage;
 
     $.ajax({
       url: '/search',
@@ -45,7 +44,6 @@ $(function () {
 
       success: function(response) {
         // Response from the backend is an array of objects
-        // console.log(response);
         renderResults(response);
 
         window.scrollTo(0, 200);
@@ -55,15 +53,16 @@ $(function () {
 })
 
 
-let renderResults = function (response) {
+const renderResults = (response) => {
   // Empty the content under the search bar
   $( ".hero-browser-inner" ).empty();
 
   if (response[0].menu_item_name) {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 25; i++) {
       // Begin rendering data returned from server after form is submitted
       $( ".first" ).append(`
         <p>
+          ${renderImage(response, i)}
           <span style="font-size:1.25rem; margin-bottom:10px;"><strong>${'#' + (i + 1)}. ${i == 0 ? '(Lowest Calories)' : ''} ${response[i].menu_item_name}</strong></span>
           <br /> 
           <br />
@@ -94,4 +93,14 @@ let renderResults = function (response) {
   } else {
     $( ".first" ).append(`<p>Oops! We're still building our database, and don't have that restaurant yet. To request that we add it, send an email to Matt at <a href="mailto:volkmattj@gmail.com"><span style="unicode-bidi: bidi-override; direction: rtl;">moc.liamg@jttamklov</span></a></p><img style="margin: 0 auto;" src='https://media0.giphy.com/media/CDpAmfo9dbOyA/giphy.gif?cid=3640f6095be4f32d737452426baf3e84' />`);
   }
+}
+
+const renderImage = (response, i) => {
+
+  if (response[i].image_url) {
+    return `<img src="${response[i].image_url}" width="150" style="margin: 0 auto 15px auto;" />`;
+  } else {
+    return ``;
+  }
+
 }
