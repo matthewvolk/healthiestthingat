@@ -10,6 +10,12 @@ $(function () {
   mainSearchInputField.focus();
 
   $('#searchForm').on('submit', function(event) {
+
+    /** 
+     * TODO: input validation
+     * &, <, >, ", `, !, @, $, %, (, ), =, +, {, }, [, and ]
+     */
+
     event.preventDefault();
 
     $.ajax({
