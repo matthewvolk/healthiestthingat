@@ -13,7 +13,10 @@ $(function () {
 
     /** 
      * TODO: input validation
-     * &, <, >, ", `, !, @, $, %, (, ), =, +, {, }, [, and ]
+     * 
+     * If any characters in mainSearchInputField.val() === &, <, >, ", `, !, @, $, %, (, ), =, +, {, }, [, or ]
+     * then
+     * $('form > div').append(`<p style="margin-top:0; margin-bottom:40px;">Results for '${query}'</p>`)
      */
 
     event.preventDefault();
