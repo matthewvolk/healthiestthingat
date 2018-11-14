@@ -40,7 +40,6 @@ app.listen(process.env.PORT, () =>
 /**
  * TODO: 
  * 
- * [] Handle AJAX POST requests via clicking on a featured restaurant. 
  * [] Write smarter SQL queries
  *    - Should return all data associated with the restaurant the user enters
  *    - Should be sortable via user filtering (Rank by Protein, Include Breakfast, etc.)
