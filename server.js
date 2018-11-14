@@ -40,19 +40,6 @@ app.listen(process.env.PORT, () =>
 /**
  * TODO: 
  * 
- * [] Write smarter SQL queries
- *    - Should return all data associated with the restaurant the user enters
- *    - Should be sortable via user filtering (Rank by Protein, Include Breakfast, etc.)
- * [] Make it pretty - format returned data (CSS, JS animations, etc.)
- * [] Search suggestions so that you can enter part of a restaurant name and see the rest of the name populate in dropdown
- * [] If no restaurant name is found, display either:
- *    - A button: "Click here to vote for us to add %query" (I would need to look out for (parse) mumbo jumbo responses like "test")
- * 
- * 
- * LONG TERM: 
- * 
- * [] Add "Near You" functionality
- * [] Break javascript out into separate, class based functions. 
- * [] Read about database migrations between Heroku and Local PostgreSQL (https://devcenter.heroku.com/articles/heroku-postgres-import-export)
+ * https://trello.com/b/jpmbSMvv/healthiestthingat
  * 
  */
