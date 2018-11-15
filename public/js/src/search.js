@@ -11,14 +11,6 @@ $(function () {
 
   $('#searchForm').on('submit', function(event) {
 
-    /** 
-     * TODO: input validation
-     * 
-     * If any characters in mainSearchInputField.val() === &, <, >, ", `, !, @, $, %, (, ), =, +, {, }, [, or ]
-     * then
-     * $('form > div').append(`<p style="margin-top:0; margin-bottom:40px;">Results for '${query}'</p>`)
-     */
-
     event.preventDefault();
 
     $.ajax({
