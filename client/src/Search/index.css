@@ -21,10 +21,16 @@ input[type=search] {
   outline-offset: -2px;
 }
 
+input[type=search]:focus {
+  outline: none;
+  border-color: #25B99A;
+}
+
 input[type=submit] {
+  -webkit-appearance: button;
+
   background: linear-gradient(65deg, #1eae8f 0, #25B99A 100%);
   color: #FFF;
-  font-size: 13px;
   letter-spacing: 0px;
   font-weight: 700;
   line-height: 16px;
