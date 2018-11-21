@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import Nav from './Nav';
+import Search from './Search';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            HealthiestThingAt
-          </p>
-          <form>
-            <input type="search" name="search" id="search"/>
-          </form>
-        </header>
+
+        <Nav />
+
+        <h1>Find the healthiest food at your favorite restaurant</h1>
+        <p>Type in the name of a restaurant to get started:</p>
+
+        <Search />
+        
       </div>
     );
   }
