@@ -14,29 +14,31 @@ class Search extends Component {
     this.setState({
       query: this.search.value
     })
+
+    if (this.search.value) { 
+      document.getElementsByClassName('autocomplete')[0].style.visibility = 'visible'; 
+    } else {
+      document.getElementsByClassName('autocomplete')[0].style.visibility = 'hidden'; 
+    }
+    /**
+     * Also, if input val = 0, do not show dropdown
+     */
   }
 
   render () {
     return (
-      <div>
-        <form>
-          <input 
-            type="search"
-            placeholder="Try typing 'Burger King' or 'McDonald's'"
-            ref={input => this.search = input}
-            onChange={this.handleInputChange}
-            name="" 
-          />
+      <form autoComplete="off">
 
-          <input 
-            type="submit" 
-            value="Search" 
-          />
-        </form>
+        <input ref={input => this.search = input} onChange={this.handleInputChange} type="search" name="search" className="search" placeholder="Try typing 'Burger King' or 'McDonald's'" />
+        <input type="submit" value="Search" />
+        
+        <div className="autocomplete">
+          <ul>
+            <li><a href="/">{this.state.query}</a></li>
+          </ul>
+        </div>
 
-        <p>{this.state.query}</p>
-      </div>
-      
+      </form>
     )
   }
 }

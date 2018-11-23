@@ -6,7 +6,7 @@ import Hero from './components/Hero/Hero';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         <Hero />
       </div>
     );
