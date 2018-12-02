@@ -27,7 +27,17 @@ class Search extends Component {
      * Every time this function fires, I need an algorithm to read the 
      * current value in the input, and append elements from the 
      * the data structure 'testData' above to the autocomplete 
-     * dropdown that match the value in input at that time
+     * dropdown that match the value in input at that time (fuzzy
+     * text search)
+     * 
+     * for (let i = 0; i < testData.length; i++) {
+     *   if (testData[i].indexOf(this.state.query) > -1) {
+     *     append testData[i] to the list of autocomplete suggestions
+     *   }
+     * }
+     * 
+     * This is a slow loop, not because of the impementation, but because
+     * it runs every time a user presses a key within the search bar
      */
 
     if (this.search.value) { 
