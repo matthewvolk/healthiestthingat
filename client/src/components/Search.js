@@ -36,7 +36,7 @@ class Search extends Component {
   }
 
   handleFocus = () => {
-    this.search.value ? document.getElementsByClassName('dropdown')[0].style.visibility = "hidden" : document.getElementsByClassName('dropdown')[0].style.visibility = "visible";
+    document.getElementsByClassName('dropdown')[0].style.visibility = "visible";
     return;
   }
 
