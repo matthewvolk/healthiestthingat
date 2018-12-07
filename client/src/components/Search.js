@@ -30,7 +30,7 @@ class Search extends Component {
     const results = testData.filter(data => data.includes(this.search.value))
 
     this.setState({
-      // If the search field has no value, do not render dropdown
+      // If the search field has no value, do not display values in dropdown
       results: this.search.value ? results : [],
     })
   }
