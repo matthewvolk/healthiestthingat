@@ -30,18 +30,24 @@ class Search extends Component {
     const results = testData.filter(data => data.includes(this.search.value))
 
     this.setState({
-      // If the search field has no value, do not display values in dropdown
       results: this.search.value ? results : [],
     })
+
+    // If there are no suggestions in the dropdown, do not display dropdown
+    if (document.getElementsByClassName('dropdown')[0].childNodes[0].childNodes) {
+      document.getElementsByClassName('dropdown')[0].style.visibility = "visible";
+    } else {
+      document.getElementsByClassName('dropdown')[0].style.visibility = "hidden";
+    }
+
+    // If the search field has no value, do not display values in dropdown
+    if (!this.search.value) {
+      document.getElementsByClassName('dropdown')[0].style.visibility = "hidden";
+    }
   }
 
   handleFocus = () => {
-    document.getElementsByClassName('dropdown')[0].style.visibility = "visible";
-    return;
-  }
-
-  handleBlur = () => {
-    document.getElementsByClassName('dropdown')[0].style.visibility = "hidden";
+    // document.getElementsByClassName('dropdown')[0].style.visibility = "visible";
     return;
   }
 
@@ -58,7 +64,6 @@ class Search extends Component {
             placeholder="Try searching for 'Burger King'"
             ref={input => this.search = input}
             onChange={this.handleInputChange}
-            onFocus={this.handleFocus}
             onBlur={this.handleBlur}
           />
 
