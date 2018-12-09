@@ -17,6 +17,10 @@ class Search extends Component {
     results: []
   }
 
+  setResults = () => {
+    
+  }
+
   componentDidMount = () => {
     this.search.focus();
   }
@@ -32,23 +36,6 @@ class Search extends Component {
     this.setState({
       results: this.search.value ? results : [],
     })
-
-    // If there are no suggestions in the dropdown, do not display dropdown
-    if (document.getElementsByClassName('dropdown')[0].childNodes[0].childNodes) {
-      document.getElementsByClassName('dropdown')[0].style.visibility = "visible";
-    } else {
-      document.getElementsByClassName('dropdown')[0].style.visibility = "hidden";
-    }
-
-    // If the search field has no value, do not display values in dropdown
-    if (!this.search.value) {
-      document.getElementsByClassName('dropdown')[0].style.visibility = "hidden";
-    }
-  }
-
-  handleFocus = () => {
-    // document.getElementsByClassName('dropdown')[0].style.visibility = "visible";
-    return;
   }
 
   render() {
@@ -64,17 +51,18 @@ class Search extends Component {
             placeholder="Try searching for 'Burger King'"
             ref={input => this.search = input}
             onChange={this.handleInputChange}
-            onBlur={this.handleBlur}
           />
 
           <input type="submit" className="search-btn" value="Search"/>
         
-
-          <div className="dropdown">
-            <ul>
-              {this.state.results.map(result => <li key={result}><a href="/">{result}</a></li>)}
-            </ul>
-          </div>
+          { 
+            (this.state.query && this.state.results) && 
+            <div className="dropdown">
+              <ul>
+                {this.state.results.map(result => <li key={result}><a href="/">{result}</a></li>)}
+              </ul>
+            </div>
+          }
         </form>
       </div>
     )

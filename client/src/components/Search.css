@@ -42,7 +42,7 @@
 }
 
 .dropdown {
-  visibility: hidden;
+  /* visibility: hidden; */
   position: absolute;
   margin-top: 49px;
   width: 100%;
