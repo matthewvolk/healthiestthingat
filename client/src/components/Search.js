@@ -56,7 +56,7 @@ class Search extends Component {
           <input type="submit" className="search-btn" value="Search"/>
         
           { 
-            (this.state.query && this.state.results) && 
+            (this.state.query && this.state.results && this.state.results.length > 0) && 
             <div className="dropdown">
               <ul>
                 {this.state.results.map(result => <li key={result}><a href="/">{result}</a></li>)}
