@@ -7,8 +7,11 @@ const testData = [
   "Carl's Jr.",
   "In N Out",
   "Jack in the Box",
-  'McDonalds',
-  'Taco Bell'
+  "McDonald's",
+  "Taco Bell",
+  "Shake Schack",
+  "Wendy's",
+  "El Pollo Loco",
 ]
 
 class Search extends Component {
