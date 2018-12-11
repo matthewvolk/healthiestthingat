@@ -20,10 +20,6 @@ class Search extends Component {
     results: []
   }
 
-  setResults = () => {
-    
-  }
-
   componentDidMount = () => {
     this.search.focus();
   }
