@@ -12,6 +12,15 @@ router.get('/', (req, res) => res.render('index'));
 \* ----------------------- */
 router.post('/search', (req, res) => {
 
+  /**
+   * TODO: Fuzzy Text Searching
+   * 
+   * This callback chain below is just a really bad 
+   * manual implementation of fuzzy text. I also need to 
+   * figure out how to best store data returned by Postgres. 
+   * I also need to rename this file to api.js and take out
+   * the front end so just show the React.js frontend. 
+   */
   let restaurantQuery = req.body.restaurantQuery
     .toLowerCase()
     .split(' ')
