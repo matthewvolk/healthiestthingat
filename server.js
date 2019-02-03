@@ -28,7 +28,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 /* ----------------------- *\
     Routes
 \* ----------------------- */
-app.use('/', require('./routes'));
+app.use('/', require('./api'));
 
 /* ----------------------- *\
     Server
