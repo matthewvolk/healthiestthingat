@@ -15,7 +15,7 @@ router.post('/search', (req, res) => {
   /**
    * TODO: Fuzzy Text Searching
    * 
-   * This callback chain below is just a really bad 
+   * This method chain below is just a really bad 
    * manual implementation of fuzzy text. I also need to 
    * figure out how to best store data returned by Postgres. 
    * I also need to rename this file to api.js and take out
