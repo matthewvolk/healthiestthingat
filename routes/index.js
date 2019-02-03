@@ -30,10 +30,10 @@ router.post('/search', (req, res) => {
     .trim();
 
   // Open connection to database
-  const client = new Client({
+  const pgConnection = new Client({
     connectionString: process.env.DATABASE_URL,
   })
-  client.connect()
+  pgConnection.connect()
    .then(() => {
 
        // Create and Sanitize SQL Query
@@ -41,7 +41,7 @@ router.post('/search', (req, res) => {
        const searchQueryParams = [restaurantQuery];
 
        // Execute SQL Query
-       return client.query(searchQuery, searchQueryParams);
+       return pgConnection.query(searchQuery, searchQueryParams);
    })
    .then((results) => {
        // Log Promise
