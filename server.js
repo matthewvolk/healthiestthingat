@@ -36,10 +36,3 @@ app.use('/', require('./routes'));
 app.listen(process.env.PORT, () => 
   console.log(`\nApplication listening on http://localhost:${process.env.PORT}/\n`)
 );
-
-/**
- * TODO: 
- * 
- * https://trello.com/b/jpmbSMvv/healthiestthingat
- * 
- */
