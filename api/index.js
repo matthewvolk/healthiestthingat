@@ -2,14 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { Client } = require('pg');
 
-/* ----------------------- *\
-    Index
-\* ----------------------- */
+// Root path
 router.get('/', (req, res) => res.render('index'));
 
-/* ----------------------- *\
-    Search API
-\* ----------------------- */
+// Search API
 router.post('/search', (req, res) => {
 
   /**
@@ -29,7 +25,6 @@ router.post('/search', (req, res) => {
     .join(' ')
     .trim();
 
-  // Open connection to database
   const pgConnection = new Client({
     connectionString: process.env.DATABASE_URL,
   })
@@ -44,7 +39,7 @@ router.post('/search', (req, res) => {
        return pgConnection.query(searchQuery, searchQueryParams);
    })
    .then((results) => {
-       // Log Promise
+       // DEBUG:
        // console.log(results.rows);
 
        // If Promise contains rows that have data, send those to the front end
