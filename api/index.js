@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { Client } = require('pg');
 
-// Root path
 router.get('/', (req, res) => res.render('index'));
 
 // Search API
@@ -50,9 +49,16 @@ router.post('/search', (req, res) => {
        }
    })
    .catch((err) => {
-       console.log('ERR:', err);
+       console.error('ERR:', err);
    });
 
+});
+
+// TODO: Refactor POST above to instead use a GET with query params
+router.get('/search', (req, res) => {
+  let restaurantQuery = req.query.q;
+
+  res.json({ "Hello": restaurantQuery });
 });
 
 module.exports = router
