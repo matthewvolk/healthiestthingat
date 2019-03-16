@@ -4,18 +4,8 @@ const { Client } = require('pg');
 
 router.get('/', (req, res) => res.render('index'));
 
-// Search API
-router.post('/search', (req, res) => {
+router.post('/search', (req, res) => { // maybe change to /v1/search
 
-  /**
-   * TODO: Fuzzy Text Searching
-   * 
-   * This method chain below is just a really bad 
-   * manual implementation of fuzzy text searching. I also need to 
-   * figure out how to best store data returned by Postgres. 
-   * I also need to rename this file to api.js and take out
-   * the front end so just show the React.js frontend. 
-   */
   let restaurantQuery = req.body.restaurantQuery
     .toLowerCase()
     .split(' ')
@@ -36,7 +26,6 @@ router.post('/search', (req, res) => {
        return pgConnection.query(searchQuery, searchQueryParams);
    })
    .then((results) => {
-       // DEBUG:
        // console.log(results.rows);
 
        if (results.rows.length > 0) {
@@ -51,8 +40,7 @@ router.post('/search', (req, res) => {
 
 });
 
-// TODO: Refactor POST above to instead use a GET with query params
-router.get('/search', (req, res) => {
+router.get('/search', (req, res) => { // maybe change to /v1/search
   let restaurantQuery = req.query.q;
 
   // connect to pg
@@ -66,9 +54,8 @@ router.get('/search', (req, res) => {
   res.json({ "Hello": restaurantQuery });
 });
 
-// TODO: Create GET for React search bar component dropdown suggestion list
-router.get('/dropdown/list' /* change to /dropdown-list? */, (req, res) => {
-  let restaurantQuerySoFar = req.data; // Get the data from the AJAX request
+router.get('/search/dropdown' /* as in /search/dropdown?q={restaurantQuerySoFar}, maybe change to /v1/search/dropdown */, (req, res) => {
+  let restaurantQuerySoFar = req.query.q; // data sent from an AJAX request that triggers as user types in search bar
 
   // connect to pg
   // LOOSE levanshtein fuzzystrmatch 
