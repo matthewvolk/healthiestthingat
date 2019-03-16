@@ -56,12 +56,15 @@ class Search extends Component {
         
           { 
             (this.state.query && this.state.results && this.state.results.length > 0) && 
+
+            // Do not create a separate Dropdown.js component for now. Overcomplicating.
             <div className="dropdown">
               <ul>
                 {this.state.results.map(result => <li key={result}><a href="/">{result}</a></li>)}
               </ul>
             </div>
           }
+
         </form>
       </div>
     )
