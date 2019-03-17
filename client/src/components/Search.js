@@ -14,9 +14,9 @@ class Search extends Component {
   }
 
   renderDropdown = () => {
-    this.setState({
-      query: this.search.value,
-    })
+    // this.setState({
+    //   query: this.search.value,
+    // })
 
     axios.get('http://localhost:3001/search/dropdown', {
       params: {
@@ -32,6 +32,9 @@ class Search extends Component {
     })
     .catch((error) => {
       console.log(error);
+      this.setState({
+        dropdownResults: this.search.value ? ["500 Internal Server Error"] : [],
+      });
 
       return;
     });
@@ -63,7 +66,7 @@ class Search extends Component {
           <input type="submit" className="search-btn" value="Search"/>
         
           {/* Dropdown */}{
-            (this.state.query && this.state.dropdownResults && this.state.dropdownResults.length > 0) && 
+            (/*this.state.query &&*/ this.state.dropdownResults && this.state.dropdownResults.length > 0) && 
 
             // Do not create a separate Dropdown.js component for now. Overcomplicating.
             <div className="dropdown">
