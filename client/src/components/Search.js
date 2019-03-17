@@ -6,7 +6,7 @@ import './Search.css'
 class Search extends Component {
   state = {
     query: '',
-    results: []
+    dropdownResults: []
   }
 
   componentDidMount = () => {
@@ -18,7 +18,6 @@ class Search extends Component {
       query: this.search.value,
     })
 
-
     axios.get('http://localhost:3001/search/dropdown', {
       params: {
         q: this.search.value
@@ -26,7 +25,7 @@ class Search extends Component {
     })
     .then((response) => {
       this.setState({
-        results: this.search.value ? response.data.dropdownResults : [],
+        dropdownResults: this.search.value ? response.data.dropdownResults : [],
       });
 
       return;
@@ -39,7 +38,7 @@ class Search extends Component {
   }
 
   handleSubmit = () => {
-    // This is where AJAX call will go for actual results (/search?q=restaurantQuery)
+    // This is where AJAX call will go for actual search results (/search?q=restaurantQuery)
   }
 
   render() {
@@ -64,12 +63,12 @@ class Search extends Component {
           <input type="submit" className="search-btn" value="Search"/>
         
           {/* Dropdown */}{
-            (this.state.query && this.state.results && this.state.results.length > 0) && 
+            (this.state.query && this.state.dropdownResults && this.state.dropdownResults.length > 0) && 
 
             // Do not create a separate Dropdown.js component for now. Overcomplicating.
             <div className="dropdown">
               <ul>
-                {this.state.results.map(result => <li key={result}><a href="/">{result}</a></li>)}
+                {this.state.dropdownResults.map(result => <li key={result}><a href="/">{result}</a></li>)}
               </ul>
             </div>
           }
