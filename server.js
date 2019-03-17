@@ -23,7 +23,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(function(req, res, next) {
   // TODO: If I want to open my API to the public, do I just do "Access-Control-Allow-Origin", "*"?
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // Local React.js server running on port 3000
+  res.header("Access-Control-Allow-Origin", "*"); 
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
