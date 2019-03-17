@@ -65,12 +65,25 @@ router.get('/search', (req, res) => { // maybe change to /v1/search
 
 router.get('/search/dropdown', (req, res) => { // maybe change to /v1/search/dropdown
   let restaurantQuerySoFar = req.query.q; // data sent from an AJAX request that triggers as user types in search bar
+  console.log(restaurantQuerySoFar);
 
   // connect to pg
   // LOOSE levanshtein fuzzystrmatch against 'restaurantQuerySoFar'
+      // for example, if restaurantQuerySoFar is "taco", return: Taco Bell, Del Taco, Jack in the Box (Jack in the Box would be tricky)
   // store results in JSON object and send to front end
 
-  res.json({/* if search bar has "taco": Taco Bell, Del Taco, Jack in the Box (J in the B would be tricky) */ restaurantQuerySoFar});
+  const dropdownResults = [
+      'Loose',
+      "Levanshtein",
+      "fuzzystrmatch",
+      "results",
+      "from",
+      "PostgreSQL",
+      "using:",
+      restaurantQuerySoFar
+    ];
+
+  res.json({dropdownResults});
 });
 
 module.exports = router

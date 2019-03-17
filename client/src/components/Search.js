@@ -1,18 +1,7 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 
 import './Search.css'
-
-const testData = [
-  'Burger King',
-  "Carl's Jr.",
-  "In N Out",
-  "Jack in the Box",
-  "McDonald's",
-  "Taco Bell",
-  "Shake Schack",
-  "Wendy's",
-  "El Pollo Loco",
-]
 
 class Search extends Component {
   state = {
@@ -24,37 +13,57 @@ class Search extends Component {
     this.search.focus();
   }
 
-  handleInputChange = () => {
+  renderDropdown = () => {
     this.setState({
       query: this.search.value,
     })
 
-    // This is where the axios AJAX call will go
-    const results = testData.filter(data => data.includes(this.search.value))
 
-    this.setState({
-      results: this.search.value ? results : [],
+    axios.get('http://localhost:3001/search/dropdown', {
+      params: {
+        q: this.search.value
+      }
     })
+    .then((response) => {
+      this.setState({
+        results: this.search.value ? response.data.dropdownResults : [],
+      });
+
+      return;
+    })
+    .catch((error) => {
+      console.log(error);
+
+      return;
+    });
+  }
+
+  handleSubmit = () => {
+    // This is where AJAX call will go for actual results (/search?q=restaurantQuery)
   }
 
   render() {
     return (
       <div>
+
+        {/* Headline Text */}
         <h1>Find the healthiest food at your favorite restaurant.</h1>
         <p>Type in the name of a restaurant to get started:</p>
 
+        {/* Input Field */}
         <form className="search">
           <input
             type="search"
             className="search-input"
             placeholder="Try searching for 'Burger King'"
             ref={input => this.search = input}
-            onChange={this.handleInputChange}
+            onChange={this.renderDropdown}
           />
 
+          {/* Submit Button */}
           <input type="submit" className="search-btn" value="Search"/>
         
-          { 
+          {/* Dropdown */}{
             (this.state.query && this.state.results && this.state.results.length > 0) && 
 
             // Do not create a separate Dropdown.js component for now. Overcomplicating.
@@ -64,8 +73,8 @@ class Search extends Component {
               </ul>
             </div>
           }
-
         </form>
+
       </div>
     )
   }
