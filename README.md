@@ -25,17 +25,21 @@ The goal is to be more convenient than manually looking up the nutritional infor
 * N/A
 
 ## Usage:
+There are three **required processes** to be running in order to use this application:
+1. The Node.js Server
+2. The React.js Client
+3. The PostgreSQL Database
 
-Run the server:
-```
-1. $ git clone https://github.com/matthewvolk/healthiestthingat.git folder-name/
-2. $ cd folder-name/
-3. $ npm run start:dev
-```
+The PostgreSQL server must have the fuzzystrmatch extension installed to use the Levanshtein distance SQL query in api/index.js, so:
+`$ psql dbname`
+`dbname=# create extension fuzzystrmatch`
 
-Serve front end:
-```
-1. $ git clone https://github.com/matthewvolk/healthiestthingat.git folder-name/
-2. $ cd folder-name/client
-3. $ yarn start
-```
+Start the Node.js server:
+`$ cd /path/to/installationdir`
+`$ npm install`
+`$ npm run start:dev`
+
+Start the React.js client:
+`$ cd /path/to/installationdir/client`
+`$ npm install`
+`$ npm run start`
