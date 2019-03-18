@@ -69,7 +69,7 @@ router.get('/search/dropdown', (req, res) => { // maybe change to /v1/search/dro
 
   // connect to pg
   // LOOSE levanshtein fuzzystrmatch against 'restaurantQuerySoFar'
-      // for example, if restaurantQuerySoFar is "taco", return: Taco Bell, Del Taco, Jack in the Box (Jack in the Box would be tricky)
+  // for example, if restaurantQuerySoFar is "taco", return: Taco Bell, Del Taco, Jack in the Box (Jack in the Box would be tricky)
   // store results in JSON object and send to front end
 
   const dropdownResults = [

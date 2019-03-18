@@ -14,11 +14,7 @@ class Search extends Component {
   }
 
   renderDropdown = () => {
-    // this.setState({
-    //   query: this.search.value,
-    // })
-
-    axios.get('http://localhost:3001/search/dropdown', {
+    axios.get('/search/dropdown', {
       params: {
         q: this.search.value
       }
@@ -40,8 +36,17 @@ class Search extends Component {
     });
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    // TODO: do I need to setState for this? Probably not
+    this.setState({
+      query: this.search.value,
+    })
+    console.log(this.state.query);
+
     // This is where AJAX call will go for actual search results (/search?q=restaurantQuery)
+
+    // Add the redirection to /search?q=query directly at the end of this handleSubmit method with the history API 
+    // (https://reacttraining.com/react-router/web/api/history)
   }
 
   render() {
@@ -53,9 +58,10 @@ class Search extends Component {
         <p>Type in the name of a restaurant to get started:</p>
 
         {/* Input Field */}
-        <form className="search">
+        <form className="search" onSubmit={this.handleSubmit}>
           <input
             type="search"
+            name="q"
             className="search-input"
             placeholder="Try searching for 'Burger King'"
             ref={input => this.search = input}
@@ -76,6 +82,8 @@ class Search extends Component {
             </div>
           }
         </form>
+
+        {/* Results? */}
 
       </div>
     )
