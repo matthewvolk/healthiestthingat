@@ -13,7 +13,7 @@ class Search extends Component {
     this.search.focus();
   }
 
-  renderDropdown = () => {
+  renderDropdownListItems = () => {
     axios.get('/search/dropdown', {
       params: {
         q: this.search.value
@@ -54,7 +54,7 @@ class Search extends Component {
       <div>
 
         {/* Headline Text */}
-        <h1>Find the healthiest food at your favorite restaurant.</h1>
+        <h1>Healthiest thing at {"_____________"}</h1>
         <p>Type in the name of a restaurant to get started:</p>
 
         {/* Input Field */}
@@ -65,7 +65,7 @@ class Search extends Component {
             className="search-input"
             placeholder="Try searching for 'Burger King'"
             ref={input => this.search = input}
-            onChange={this.renderDropdown}
+            onChange={this.renderDropdownListItems}
           />
 
           {/* Submit Button */}
