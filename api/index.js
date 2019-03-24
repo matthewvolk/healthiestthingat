@@ -73,13 +73,8 @@ router.get('/search/dropdown', (req, res) => { // maybe change to /v1/search/dro
   // store results in JSON object and send to front end
 
   const dropdownResults = [
-      'Loose',
-      "Levanshtein",
-      "fuzzystrmatch",
-      "results",
-      "from",
-      "PostgreSQL",
-      "using:",
+      '<Loose Levanshtein fuzzystrmatch results here>',
+      'Returned from Server:',
       restaurantQuerySoFar
     ];
 
