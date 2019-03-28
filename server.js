@@ -22,7 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(function(req, res, next) {
-  // TODO: If I want to open my API to the public, do I just do "Access-Control-Allow-Origin", "*"?
   res.header("Access-Control-Allow-Origin", "*"); 
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
