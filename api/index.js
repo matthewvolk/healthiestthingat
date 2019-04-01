@@ -75,7 +75,7 @@ router.get('/search', (req, res) => { // maybe change to /v1/search
 router.get('/search/dropdown', (req, res) => { // maybe change to /v1/search/dropdown
   let restaurantQuerySoFar = req.query.q; // data sent from an AJAX request that triggers as user types in search bar
   console.log(restaurantQuerySoFar);
-  
+
   // TODO if restaurantQuerySoFar is "taco", return: Taco Bell, Del Taco, Jack in the Box (Jack in the Box would be tricky)
 
   // Loose levanshtein fuzzystrmatch against 'restaurantQuerySoFar'
@@ -92,7 +92,6 @@ router.get('/search/dropdown', (req, res) => { // maybe change to /v1/search/dro
    })
    .then((results) => {
       // console.log(results.rows);
-
       let restaurantsUnique = [];
       restaurantsUnique = removeDuplicatesBy(x => x.restaurant_name, results.rows);
       let dropdownList = [];
@@ -104,6 +103,7 @@ router.get('/search/dropdown', (req, res) => { // maybe change to /v1/search/dro
 
       if (dropdownList.length > 0) {
           res.json({dropdownList})
+
       } else {
         const dropdownList = [
           'No results found in DB for:',
@@ -115,6 +115,8 @@ router.get('/search/dropdown', (req, res) => { // maybe change to /v1/search/dro
    })
    .catch((err) => {
        console.error('ERR:', err);
+       const dropdownList = ["Cannot connect to database"];
+       res.json({dropdownList})
    });
 
 });
