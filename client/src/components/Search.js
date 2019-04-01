@@ -21,7 +21,7 @@ class Search extends Component {
     })
     .then((response) => {
       this.setState({
-        dropdownResults: this.search.value ? response.data.dropdownResults : [],
+        dropdownResults: this.search.value ? response.data.dropdownList : [],
       });
 
       return;
