@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Client } = require('pg');
 
+// TODO: Figure out how I made this work
 function removeDuplicatesBy(keyFn, array) {
   var mySet = new Set();
   return array.filter(function(x) {
@@ -11,6 +12,7 @@ function removeDuplicatesBy(keyFn, array) {
   });
 }
 
+// TODO: Decommission index route
 router.get('/', (req, res) => res.render('index'));
 
 // TODO: Decommission POST search
