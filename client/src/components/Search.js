@@ -77,7 +77,7 @@ class Search extends Component {
             // Do not create a separate Dropdown.js component for now. Overcomplicating.
             <div className="dropdown">
               <ul>
-                {this.state.dropdownResults.map(result => <li key={result}><a href="/">{result}</a></li>)}
+                {this.state.dropdownResults.map(result => <li key={result}><a href={`/search?q=${encodeURI(result)}`}>{result}</a></li>)}
               </ul>
             </div>
           }
