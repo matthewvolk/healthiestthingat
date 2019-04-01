@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const { Client } = require('pg');
 
+function removeDuplicatesBy(keyFn, array) {
+  var mySet = new Set();
+  return array.filter(function(x) {
+    var key = keyFn(x), isNew = !mySet.has(key);
+    if (isNew) mySet.add(key);
+    return isNew;
+  });
+}
+
 router.get('/', (req, res) => res.render('index'));
 
 // TODO: Decommission POST search
@@ -66,19 +75,48 @@ router.get('/search', (req, res) => { // maybe change to /v1/search
 router.get('/search/dropdown', (req, res) => { // maybe change to /v1/search/dropdown
   let restaurantQuerySoFar = req.query.q; // data sent from an AJAX request that triggers as user types in search bar
   console.log(restaurantQuerySoFar);
+  
+  // TODO if restaurantQuerySoFar is "taco", return: Taco Bell, Del Taco, Jack in the Box (Jack in the Box would be tricky)
 
-  // connect to pg
-  // LOOSE levanshtein fuzzystrmatch against 'restaurantQuerySoFar'
-  // for example, if restaurantQuerySoFar is "taco", return: Taco Bell, Del Taco, Jack in the Box (Jack in the Box would be tricky)
-  // store results in JSON object and send to front end
+  // Loose levanshtein fuzzystrmatch against 'restaurantQuerySoFar'
+  const pgConnection = new Client({
+    connectionString: process.env.DATABASE_URL,
+  })
+  pgConnection.connect()
+   .then(() => {
+      // levenshtein() can only be used if Postgres fuzzystrmatch extension is installed on DB
+      const searchQuery = "SELECT * FROM restaurant_menu_items WHERE levenshtein(upper($1), upper(restaurant_name)) <= 10;"
+      const searchQueryParams = [restaurantQuerySoFar];
 
-  const dropdownResults = [
-      '<Loose Levanshtein fuzzystrmatch results here>',
-      'Returned from Server:',
-      restaurantQuerySoFar
-    ];
+      return pgConnection.query(searchQuery, searchQueryParams);
+   })
+   .then((results) => {
+      // console.log(results.rows);
 
-  res.json({dropdownResults});
+      let restaurantsUnique = [];
+      restaurantsUnique = removeDuplicatesBy(x => x.restaurant_name, results.rows);
+      let dropdownList = [];
+      for (var i = 0; i < restaurantsUnique.length; i++) {
+        dropdownList.push(restaurantsUnique[i].restaurant_name)
+      }
+
+      console.log(dropdownList)
+
+      if (dropdownList.length > 0) {
+          res.json({dropdownList})
+      } else {
+        const dropdownList = [
+          'No results found in DB for:',
+          restaurantQuerySoFar
+        ];
+
+        res.json({dropdownList})
+      }
+   })
+   .catch((err) => {
+       console.error('ERR:', err);
+   });
+
 });
 
 module.exports = router
