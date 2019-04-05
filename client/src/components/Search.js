@@ -13,7 +13,10 @@ class Search extends Component {
     this.search.focus();
   }
 
-  renderDropdownListItems = () => {
+  /**
+   * @todo add delay between last user keypress and axios request
+   */
+  handleOnChange = () => {
     axios.get('/search/dropdown', {
       params: {
         q: this.search.value
@@ -36,8 +39,10 @@ class Search extends Component {
     });
   }
 
+  /**
+   * @todo remove setState
+   */
   handleSubmit = (event) => {
-    // TODO: do I need to setState for this? Probably not
     this.setState({
       query: this.search.value,
     })
@@ -65,7 +70,7 @@ class Search extends Component {
             className="search-input"
             placeholder="Try searching for 'Burger King'"
             ref={input => this.search = input}
-            onChange={this.renderDropdownListItems}
+            onChange={this.handleOnChange}
           />
 
           {/* Submit Button */}
