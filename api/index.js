@@ -1,23 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Client } = require('pg');
-
-/**
- * Filter an array of objects by iterating over a single key in the object
- * 
- * @param { Callback } keyFn Returns the key for which to search for duplicates in other objects in the array
- * @param { Object[] } array Array of objects (with the same schema) to be filtered
- * 
- * @returns { Object[] } Filtered array of objects
- */
-function removeDuplicatesBy(keyFn, array) {
-  var mySet = new Set();
-  return array.filter(function(x) {
-    var key = keyFn(x), isNew = !mySet.has(key);
-    if (isNew) mySet.add(key);
-    return isNew;
-  });
-}
+const { removeDupeObjectsByKey } = require('../utils');
 
 /**
  * @todo decommission index route
@@ -108,17 +92,15 @@ router.get('/search/dropdown', (req, res) => {
    .then((results) => {
 
       /**
-       * @todo validate schema of restaurantsUnique before passing to removeDuplicatesBy()
+       * @todo validate schema of restaurantsUnique before passing to removeDupeObjectsByKey()
        * @todo results.rows.has(restaurant_name)
        */
       let restaurantsUnique = [];
-      restaurantsUnique = removeDuplicatesBy(x => x.restaurant_name, results.rows);
+      restaurantsUnique = removeDupeObjectsByKey(obj => obj.restaurant_name, results.rows);
       let dropdownList = [];
       for (var i = 0; i < restaurantsUnique.length; i++) {
         dropdownList.push(restaurantsUnique[i].restaurant_name)
       }
-
-      console.log(dropdownList)
 
       if (dropdownList.length > 0) {
           res.json({dropdownList})
