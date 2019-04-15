@@ -52,6 +52,7 @@ router.post('/search', (req, res) => {
  */
 router.get('/search', (req, res) => {
   let restaurantQuery = req.query.q;
+  console.log(restaurantQuery);
 
   // connect to pg
   // STRICT levanshtein fuzzystrmatch using 'restaurantQuery'
